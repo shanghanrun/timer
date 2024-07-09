@@ -4,14 +4,14 @@ import './App.css'
 function App() {
   const [minsec, setMinsec] = useState('0:0');
   const [time, setTime] = useState(0);
-  const [timer, setTimer] = useState(null);
+  const [timer, setTimer] = useState(null); 
   const [bgColor, setBgColor] = useState('white');
   const beepSound = useRef(null);
 
-  const time2minsec = (ms) => {
-    const s = Math.floor(ms / 1000);
-    const min = Math.floor(s / 60);
-    const sec = s - 60 * min;
+  const time2minsec = (ms) => {     //밀리세컨드(time)를  분과 초로 보여주기
+    const s = Math.floor(ms / 1000);  // time/1000 으로 만듬
+    const min = Math.floor(s / 60);  // 다시 60으로 나누어서 나머지를 제거하면 분이 된다.
+    const sec = s - 60 * min;   // time/1000 에서 분을 빼면, 나머지 초가 나온다.
     return `${min}:${sec}`;
   };
 
@@ -62,7 +62,7 @@ function App() {
     stopBeep();
   };
 
-  const add = (n) => {
+  const add = (n) => {    // 1분은 60초  60초는 60*1000(단위)
     setTime((prevTime) => prevTime + 1000 * n);
     if (!timer) countdown();
   };
